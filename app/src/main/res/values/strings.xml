@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Pixel Music</string>
+<!--suppress SpellCheckingInspection -->
+<string name="app_name">PixelMusic</string>
 </resources>

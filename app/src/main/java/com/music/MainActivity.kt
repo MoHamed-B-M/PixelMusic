@@ -1,4 +1,5 @@
-package com.pmusic.pixelmusic
+
+package com.music.pixelmusic
 
 import android.Manifest
 import android.os.Build
@@ -19,13 +20,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.pmusic.pixelmusic.ui.components.PlayerBar
-import com.pmusic.pixelmusic.ui.screens.SongListScreen
-import com.pmusic.pixelmusic.ui.theme.pixelmusicTheme
-import com.pmusic.pixelmusic.viewmodel.MainViewModel
+import com.music.pixelmusic.ui.components.PlayerBar
+import com.music.pixelmusic.ui.screens.SongListScreen
+import com.music.pixelmusic.ui.theme.MusicPlayerTheme
+import com.music.pixelmusic.viewmodel.MainViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -37,7 +39,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            pixelmusicTheme {
+            MusicPlayerTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -45,12 +47,10 @@ class MainActivity : ComponentActivity() {
                     val viewModel: MainViewModel = viewModel()
                     val context = LocalContext.current
 
-                    // Initialize player when permission granted
                     LaunchedEffect(Unit) {
                         viewModel.initializePlayer(context)
                     }
 
-                    // Periodically update current position
                     LaunchedEffect(Unit) {
                         while (true) {
                             viewModel.updateCurrentPosition()
@@ -58,7 +58,6 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-                    // Permission handling
                     val permission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                         Manifest.permission.READ_MEDIA_AUDIO
                     } else {
@@ -104,7 +103,7 @@ class MainActivity : ComponentActivity() {
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center
                         ) {
-                            Text("Music Player needs access to your audio files")
+                            Text("PixelMusic needs access to your audio files")
                             Spacer(modifier = Modifier.height(16.dp))
                             when {
                                 permissionState.status.shouldShowRationale -> {

@@ -1,4 +1,4 @@
-package com.example.pixelmusic.model
+package com.music.pixelmusic.model
 
 import android.net.Uri
 

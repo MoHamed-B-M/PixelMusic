@@ -1,4 +1,4 @@
-package com.example.pixelmusic.ui.components
+package com.music.pixelmusic.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.pixelmusic.model.Song
+import com.music.pixelmusic.model.Song
 
 @Composable
 fun SongItem(

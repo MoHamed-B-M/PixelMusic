@@ -1,4 +1,4 @@
-package com.example.pixelmusic.ui.theme
+package com.music.pixelmusic.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

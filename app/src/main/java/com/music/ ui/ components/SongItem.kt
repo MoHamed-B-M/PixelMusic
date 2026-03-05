@@ -1,4 +1,4 @@
-package com.example.pixelmusic.ui.components
+package com.music.pixelmusic.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.pixelmusic.model.Song
+import com.msuci.pixelmusic.model.Song
 
 @Composable
 fun SongItem(
@@ -62,6 +62,17 @@ fun SongItem(
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.primary
             )
+        }
+        # Remove SongItem from PlayerBar.kt (if it exists)
+        $playerBar = "app\src\main\java\com\msuci\music\ui\components\PlayerBar.kt"
+        if (Test-Path $playerBar) {
+            (Get-Content $playerBar) -notmatch 'fun SongItem\(' | Set-Content $playerBar
+        }
+        
+        # Remove SongItem from SongListScreen.kt (if it exists)
+        $songListScreen = "app\src\main\java\com\msuci\music\ui\screens\SongListScreen.kt"
+        if (Test-Path $songListScreen) {
+            (Get-Content $songListScreen) -notmatch 'fun SongItem\(' | Set-Content $songListScreen
         }
     }
 }

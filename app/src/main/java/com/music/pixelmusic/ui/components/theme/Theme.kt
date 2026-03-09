@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 @Composable
-fun pixelmusicTheme(
+fun MusicPlayerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
@@ -27,7 +27,7 @@ fun pixelmusicTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = MaterialTheme.typography, // or define custom expressive typography
+        typography = MaterialTheme.typography,
         content = content
     )
 }

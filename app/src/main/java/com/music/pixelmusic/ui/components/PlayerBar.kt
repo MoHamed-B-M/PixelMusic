@@ -1,3 +1,4 @@
+
 package com.music.pixelmusic.ui.components
 
 import androidx.compose.foundation.layout.Column
@@ -87,7 +88,6 @@ fun PlayerBar(
                 }
             }
 
-            // Seek bar
             val positionSeconds = (currentPosition / 1000).toFloat()
             val durationSeconds = (currentSong.duration / 1000).toFloat()
             var sliderPos by remember { mutableFloatStateOf(positionSeconds) }
@@ -95,12 +95,11 @@ fun PlayerBar(
             Slider(
                 value = sliderPos,
                 onValueChange = { sliderPos = it },
-                onValueChangedFinished = { onSeek((sliderPos * 1000).toLong()) },
+                onValueChangeFinished = { onSeek((sliderPos * 1000).toLong()) },
                 valueRange = 0f..durationSeconds,
                 modifier = Modifier.fillMaxWidth()
             )
 
-            // Playback controls and time labels
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically

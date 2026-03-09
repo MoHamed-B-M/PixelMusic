@@ -18,7 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.msuci.pixelmusic.model.Song
+import com.music.pixelmusic.model.Song
 
 @Composable
 fun SongItem(
